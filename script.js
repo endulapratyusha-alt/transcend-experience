@@ -37,12 +37,14 @@ s.before.map(i=>"<li>"+i+"</li>").join("");
 
 document.getElementById("after").innerHTML =
 s.after.map(i=>"<li>"+i+"</li>").join("");
-}
 
-function run(){
-if(currentCompany==="enterprise"){
-alert("Pulse: system-level trust confirmed");
-}
-}
+// 👇 ADD ONLY THIS PART
+const enterpriseBox = document.getElementById("enterpriseBox");
 
+if (currentCompany === "enterprise") {
+  enterpriseBox.style.display = "block";
+} else {
+  enterpriseBox.style.display = "none";
+}
+}
 render();
