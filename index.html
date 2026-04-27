@@ -1,181 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Transcend repositioning experience concept</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Transcend Enterprise Narrative</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <audio id="pulseSound" src="transcend-pulse.wav" preload="auto"></audio>
 
-  <main class="page">
-    <section class="hero">
-      <div class="topbar">
-        <div class="brand-mark" aria-label="Transcend inspired mark">
-          <span></span><span></span><span></span>
-        </div>
-        <p>PMM repositioning concept</p>
-      </div>
+<h1>
+Built for enterprise AI and data governance.<br>
+Adopted across every stage.
+</h1>
 
-      <div class="hero-grid">
-        <div>
-          <p class="eyebrow">Proposed narrative shift</p>
-          <h1>From privacy workflows to an AI-ready data foundation</h1>
-          <p class="hero-copy">
-            A before-and-after experience showing how Transcend can move beyond company-type navigation
-            and tell a stronger maturity story: automate privacy, govern customer data, and unlock AI with control.
-          </p>
-          <div class="hero-actions">
-            <button class="primary-btn" id="startBtn">Start the experience</button>
-            <button class="secondary-btn" id="pulsePreviewBtn">Preview Pulse</button>
-          </div>
-          <p class="disclaimer">
-            Concept exercise only. Inspired by Transcend’s public product and messaging themes. Not official Transcend brand guidance.
-          </p>
-        </div>
+<p>
+Transcend is the compliance layer for customer data.
+It enables enterprises to activate AI responsibly.
+</p>
 
-        <div class="hero-card" aria-label="Conceptual data foundation graphic">
-          <div class="foundation-stack">
-            <div class="stack-layer ai">AI-ready activation</div>
-            <div class="stack-layer governance">Customer data governance</div>
-            <div class="stack-layer privacy">Privacy rights and consent</div>
-            <div class="stack-base">Compliance layer for customer data</div>
-          </div>
-        </div>
-      </div>
-    </section>
+<h2>Where are you today?</h2>
 
-    <section class="reframe-card">
-      <div>
-        <p class="eyebrow">The reframe</p>
-        <h2>Keep “by company type” as navigation. Lead with the buyer outcome.</h2>
-      </div>
-      <div class="reframe-grid">
-        <article>
-          <h3>Current category logic</h3>
-          <p>AI, Consumer, Fintech, Media, B2B, Mid-large businesses, Enterprise.</p>
-        </article>
-        <article>
-          <h3>Proposed PMM narrative</h3>
-          <p>Privacy operations → customer data governance → AI-ready compliant activation.</p>
-        </article>
-      </div>
-    </section>
+<div>
+  <button onclick="setCompany('startup')">Startups</button>
+  <button onclick="setCompany('mid')">Mid-market</button>
+  <button onclick="setCompany('enterprise')">Enterprise</button>
+</div>
 
-    <section class="experience" id="experience">
-      <div class="section-header">
-        <p class="eyebrow">Before and after by maturity</p>
-        <h2>Choose where the customer is in their privacy and data journey</h2>
-      </div>
+<h2 id="title"></h2>
+<p id="desc"></p>
 
-      <div class="stage-tabs" role="tablist" aria-label="Customer maturity stages">
-        <button class="stage-tab active" data-stage="privacy">1. Automate privacy</button>
-        <button class="stage-tab" data-stage="governance">2. Govern customer data</button>
-        <button class="stage-tab" data-stage="ai">3. Activate AI responsibly</button>
-      </div>
+<h3>Before</h3>
+<ul id="before"></ul>
 
-      <div class="stage-card">
-        <div class="stage-intro">
-          <div>
-            <p class="eyebrow" id="stageEyebrow">Stage 1</p>
-            <h2 id="stageTitle">Automate privacy rights and consent</h2>
-            <p id="stageDescription">
-              The first maturity leap is moving from manual privacy follow-up to repeatable execution.
-            </p>
-          </div>
-          <div class="stage-fit">
-            <span>Best fit</span>
-            <strong id="stageFit">Early-stage and scaling teams</strong>
-          </div>
-        </div>
+<h3>After</h3>
+<ul id="after"></ul>
 
-        <div class="comparison-grid">
-          <article class="panel before">
-            <div class="panel-header">
-              <span class="status-dot amber"></span>
-              <h3>Before</h3>
-            </div>
-            <p class="panel-kicker" id="beforeKicker">Privacy is handled, but not operationalized.</p>
-            <ul id="beforeList"></ul>
-          </article>
+<br>
 
-          <article class="panel after">
-            <div class="panel-header">
-              <span class="status-dot mint"></span>
-              <h3>After Transcend</h3>
-            </div>
-            <p class="panel-kicker" id="afterKicker">Privacy becomes a workflow customers can trust.</p>
-            <ul id="afterList"></ul>
-          </article>
-        </div>
+<button onclick="run()">Run workflow</button>
 
-        <section class="demo-strip">
-          <div class="demo-copy">
-            <p class="eyebrow">Trust moment</p>
-            <h3 id="demoTitle">Complete a privacy request</h3>
-            <p id="demoDescription">
-              The Pulse stays silent here because the organization is still building the operating foundation.
-            </p>
-          </div>
-          <button class="primary-btn small" id="completeBtn">Run workflow</button>
-        </section>
+<script src="script.js"></script>
 
-        <div class="workflow">
-          <div class="workflow-steps" id="workflowSteps"></div>
-          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-          <div class="pulse-message" id="pulseMessage">
-            <span class="pulse-dot" id="pulseDot"></span>
-            <span id="pulseText">Pulse silent: trust is still being verified manually.</span>
-          </div>
-        </div>
-
-        <div class="strategic-line">
-          <span>PMM insight</span>
-          <p id="insightLine">
-            Do not signal trust before the workflow is mature enough to deserve it.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="solution-architecture">
-      <p class="eyebrow">Repositioned solution architecture</p>
-      <h2>How the solutions menu could tell a stronger story</h2>
-
-      <div class="architecture-grid">
-        <article>
-          <span>01</span>
-          <h3>Automate privacy rights and consent</h3>
-          <p>Turn DSRs, consent, preferences, and privacy center workflows into repeatable execution.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>Govern customer data at the systems layer</h3>
-          <p>Map, classify, and control customer data across tools, vendors, warehouses, and workflows.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>Activate AI responsibly</h3>
-          <p>Help teams use customer data in AI with consent, policy enforcement, and operational control.</p>
-        </article>
-        <article>
-          <span>04</span>
-          <h3>Scale by business model</h3>
-          <p>Keep AI, B2B SaaS, fintech, media, consumer, mid-market, and enterprise as secondary paths.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="closing">
-      <h2>What if trust did not need to be checked every time?</h2>
-      <p>
-        The Pulse is not a jingle. It is a restrained product cue for the moments when invisible privacy
-        infrastructure proves it worked.
-      </p>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
 </body>
 </html>
