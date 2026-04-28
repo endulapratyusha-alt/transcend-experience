@@ -1,155 +1,100 @@
 const stages = {
   early: {
-    label: "Early foundation",
-    title: "Operationalize privacy before complexity scales.",
-    description: "Early teams need a reliable privacy foundation before they can scale governance or AI readiness.",
-    beforeHeadline: "Privacy is handled manually.",
-    afterHeadline: "Privacy becomes structured and repeatable.",
+    kicker: "For early-stage startups",
+    headline: "Give early-stage startups a durable privacy and data foundation.",
+    description:
+      "Early-stage startups can put consent, preferences, and data context in place before fragmented processes become permanent operating debt.",
+    beforeTitle: "Privacy lives in scattered workflows.",
+    afterTitle: "A governed layer starts forming across customer data.",
     before: [
-      "Requests move through email, spreadsheets, and tickets.",
-      "Consent and preference data is not connected downstream.",
-      "Legal, support, and engineering verify completion manually."
+      {
+        title: "Consent captured in point tools",
+        text: "Signals exist, but they are not yet connected to every place customer data moves."
+      },
+      {
+        title: "Usage questions slow teams down",
+        text: "Product and growth teams rely on one-off reviews to understand what data is appropriate to use."
+      },
+      {
+        title: "Manual coordination becomes normal",
+        text: "Privacy decisions depend on people remembering the latest policy, system, and request context."
+      }
     ],
     after: [
-      "Privacy requests follow a clear intake and execution path.",
-      "Workflow ownership becomes visible and repeatable.",
-      "The company creates a foundation for scalable data operations."
+      {
+        title: "A foundation for consent and preferences",
+        text: "Customer choices become structured signals that can support future data workflows."
+      },
+      {
+        title: "Data context is easier to find",
+        text: "Teams begin building a shared understanding of where customer data lives and how it should be governed."
+      },
+      {
+        title: "Compliance scales with the stack",
+        text: "The company avoids rebuilding privacy from scratch as new systems, regions, and AI pilots arrive."
+      }
     ],
-    payoffTitle: "A foundation for scalable privacy operations.",
-    payoffCopy: "The organization creates the operating layer it will need before AI and governance demands increase."
+    outcomeTitle: "A foundation for trustworthy data use at the startup stage",
+    outcome:
+      "Early-stage startups can answer basic usage questions with more confidence and prepare for scale without redesigning compliance from scratch.",
+    cta: "Start here"
   },
   scaling: {
-    label: "Scaling complexity",
-    title: "Move from privacy workflows to data infrastructure.",
-    description: "Mid sized teams start to feel the limits of fragmented systems, manual coordination, and incomplete data visibility.",
-    beforeHeadline: "Customer data is spread across systems.",
-    afterHeadline: "Customer data becomes visible and actionable.",
+    kicker: "For Mid sized companies",
+    headline: "Help Mid sized teams grow without turning governance into a bottleneck.",
+    description:
+      "As systems multiply, Transcend helps Mid sized privacy, compliance, and business teams coordinate around one governed customer data layer.",
+    beforeTitle: "Growth creates more systems than governance can manually track.",
+    afterTitle: "Customer data workflows become coordinated and policy-aware.",
     before: [
-      "Teams cannot confidently answer where data lives.",
-      "Privacy workflows require coordination across many tools.",
-      "Governance decisions are reactive and slow."
+      {
+        title: "Teams manage privacy in parallel",
+        text: "Legal, marketing, product, and data teams each keep their own version of what is allowed."
+      },
+      {
+        title: "AI pilots get stuck in review",
+        text: "The question is not whether AI is valuable, but whether customer data is ready to use responsibly."
+      },
+      {
+        title: "Policies are hard to operationalize",
+        text: "Approvals may exist on paper while enforcement still depends on manual follow-through across tools."
+      }
     ],
     after: [
-      "Data discovery and mapping create system-level visibility.",
-      "Privacy workflows connect to actual data locations.",
-      "Consent and policy enforcement become easier to operationalize."
+      {
+        title: "One compliance layer across workflows",
+        text: "Teams align around shared rules, data context, and consent signals instead of disconnected handoffs."
+      },
+      {
+        title: "Governed activation becomes repeatable",
+        text: "Customer data can support personalization, analytics, and AI initiatives with clearer guardrails."
+      },
+      {
+        title: "Policy enforcement moves closer to the source",
+        text: "Compliance logic becomes part of the operating model, not a final review step after work is done."
+      }
     ],
-    payoffTitle: "Customer data governance starts to scale.",
-    payoffCopy: "Transcend helps teams move from disconnected processes to a customer data foundation that can support enterprise demands."
+    outcomeTitle: "A repeatable operating layer for Mid sized growth",
+    outcome:
+      "Mid sized teams can move faster because compliance becomes embedded in how customer data is understood, approved, and activated.",
+    cta: "See how it works"
   },
   enterprise: {
-    label: "Enterprise destination",
-    title: "Customer data becomes a governed, AI-ready asset.",
-    description: "For enterprise teams, Transcend positions compliance as infrastructure: a control layer that helps data, AI, and business systems operate with governed customer data.",
-    beforeHeadline: "Enterprise AI is blocked by uncertainty in the data layer.",
-    afterHeadline: "A unified compliance layer makes customer data AI-ready.",
+    kicker: "For enterprise",
+    headline: "Customer data becomes a governed, AI-ready asset.",
+    description:
+      "For enterprise teams, Transcend positions compliance as infrastructure: a control layer that helps data, AI, and business systems operate with governed customer data.",
+    beforeTitle: "Enterprise AI is blocked by uncertainty in the data layer.",
+    afterTitle: "A unified compliance layer makes customer data AI-ready.",
     before: [
-      "Data is scattered across enterprise systems.",
-      "AI teams cannot tell what is safe to use.",
-      "Compliance becomes a brake on transformation.",
-      "Manual reviews do not match enterprise scale."
-    ],
-    after: [
-      "Unified governance travels with customer data.",
-      "AI runs on governed, permissioned data.",
-      "Automated policy enforcement supports scale.",
-      "Enterprise teams share one source of truth."
-    ],
-    payoffTitle: "Customer data becomes a governed, AI-ready asset.",
-    payoffCopy: "The enterprise destination is not just better privacy operations. It is customer data infrastructure that can support AI, personalization, and growth with governance built in."
-  }
-};
-
-let currentStage = "early";
-let pulseLock = false;
-
-const stageLabel = document.getElementById("stageLabel");
-const stageTitle = document.getElementById("stageTitle");
-const stageDescription = document.getElementById("stageDescription");
-const beforeHeadline = document.getElementById("beforeHeadline");
-const afterHeadline = document.getElementById("afterHeadline");
-const beforeList = document.getElementById("beforeList");
-const afterList = document.getElementById("afterList");
-const payoffTitle = document.getElementById("payoffTitle");
-const payoffCopy = document.getElementById("payoffCopy");
-const outcomeCta = document.getElementById("outcomeCta");
-
-function playPulse() {
-  const audio = document.getElementById("pulseAudio");
-  if (!audio || pulseLock) return;
-
-  pulseLock = true;
-  audio.currentTime = 0;
-  audio.volume = 0.4;
-
-  audio.play().catch((error) => {
-    console.log("Audio play failed:", error);
-  });
-
-  setTimeout(() => {
-    pulseLock = false;
-  }, 1800);
-}
-
-function renderPoints(container, points) {
-  container.innerHTML = points
-    .map((point, index) => `<div class="point"><span>${index + 1}</span><p>${point}</p></div>`)
-    .join("");
-}
-
-function setStage(stage, shouldPlay = false) {
-  currentStage = stage;
-  const content = stages[stage];
-
-  stageLabel.textContent = content.label;
-  stageTitle.textContent = content.title;
-  stageDescription.textContent = content.description;
-  beforeHeadline.textContent = content.beforeHeadline;
-  afterHeadline.textContent = content.afterHeadline;
-  payoffTitle.textContent = content.payoffTitle;
-  payoffCopy.textContent = content.payoffCopy;
-
-  renderPoints(beforeList, content.before);
-  renderPoints(afterList, content.after);
-
-  document.querySelectorAll(".stage-tab").forEach((tab) => {
-    tab.classList.toggle("active", tab.dataset.stage === stage);
-  });
-
-  document.getElementById("dotEarly").classList.toggle("active", stage === "early");
-  document.getElementById("dotScaling").classList.toggle("active", stage === "scaling");
-  document.getElementById("dotEnterprise").classList.toggle("active", stage === "enterprise");
-
-  if (stage === "enterprise" && shouldPlay) {
-    setTimeout(playPulse, 160);
-  }
-}
-
-document.querySelectorAll("[data-stage]").forEach((item) => {
-  item.addEventListener("click", () => {
-    const stage = item.dataset.stage;
-    const enterpriseTrigger = item.hasAttribute("data-enterprise-trigger");
-    setStage(stage, enterpriseTrigger);
-    if (stage === "enterprise") {
-      document.getElementById("experience").scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  });
-});
-
-document.querySelectorAll("[data-enterprise-trigger]").forEach((item) => {
-  item.addEventListener("click", () => {
-    if (currentStage === "enterprise" || item.dataset.stage === "enterprise") {
-      setTimeout(playPulse, 160);
-    }
-  });
-});
-
-outcomeCta.addEventListener("click", () => {
-  if (currentStage === "enterprise") {
-    playPulse();
-  } else {
-    document.getElementById("solutions").scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-});
-
-setStage("early");
+      {
+        title: "Data is scattered across complex systems",
+        text: "Customer data sits in warehouses, vendor tools, marketing systems, and internal platforms with uneven context."
+      },
+      {
+        title: "AI teams cannot tell what is safe to use",
+        text: "Governance questions slow initiatives because permissions, policies, and data lineage are difficult to connect."
+      },
+      {
+        title: "Compliance becomes a brake on transformation",
+        text: "Business teams want to activate data, while legal and privacy teams need confidence that rules are enforced."
